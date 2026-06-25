@@ -1259,6 +1259,29 @@ a {
         height: 500px;
     }
     
+    .hero-image-grid .item-1 {
+        width: 50%;
+        height: 65%;
+        left: 0;
+        top: 0;
+    }
+    
+    .hero-image-grid .item-2 {
+        width: 46%;
+        height: 60%;
+        right: 0;
+        top: 20%;
+    }
+    
+    .hero-image-grid .item-3 {
+        width: 42%;
+        height: 48%;
+        left: 12%;
+        bottom: 0;
+        z-index: 4;
+        opacity: 0.95;
+    }
+    
     .about-container {
         grid-template-columns: 1fr;
         gap: 4rem;
