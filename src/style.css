@@ -435,6 +435,10 @@ a {
     opacity: 0.6;
 }
 
+.hero-image-grid .item-3 .hero-img {
+    object-position: center top;
+}
+
 /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
