@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+
+# Local configuration files
+.env
+.env*.local
+
+# Photography Catalogs (Excluding raw/original giant assets to prevent git bloat)
+Raw/
+Catalogo/
+Seleção/
+Pós Prod - Camila/
+
+# Python scripts & logs & temporary files
+*.log
+*.pyc
+__pycache__/
+images_metadata.json
+
+# Editor directories
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
