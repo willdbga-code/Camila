@@ -310,10 +310,33 @@ if (bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
+        const name = document.getElementById('form-name').value;
+        const email = document.getElementById('form-email').value;
+        const phone = document.getElementById('form-phone').value;
+        const serviceSelect = document.getElementById('form-service');
+        const service = serviceSelect.options[serviceSelect.selectedIndex].text;
+        const date = document.getElementById('form-date').value;
+        const msg = document.getElementById('form-msg').value;
+        
         const submitBtn = bookingForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Processando...';
+        submitBtn.textContent = 'Direcionando...';
         submitBtn.disabled = true;
+        
+        // Format WhatsApp message
+        let waText = `Olá Camila! Gostaria de solicitar um orçamento:\n\n`;
+        waText += `*Nome:* ${name}\n`;
+        waText += `*E-mail:* ${email}\n`;
+        waText += `*WhatsApp:* ${phone}\n`;
+        waText += `*Serviço:* ${service}\n`;
+        if (date) {
+            const formattedDate = date.split('-').reverse().join('/');
+            waText += `*Data Estimada:* ${formattedDate}\n`;
+        }
+        waText += `*Detalhes:* ${msg}`;
+        
+        const encodedText = encodeURIComponent(waText);
+        const waUrl = `https://wa.me/5512991132214?text=${encodedText}`;
         
         // Simulating booking process
         setTimeout(() => {
@@ -321,14 +344,17 @@ if (bookingForm) {
             submitBtn.disabled = false;
             
             formStatus.className = 'form-status success';
-             formStatus.textContent = 'Obrigado! Sua solicitação de reserva foi enviada. Camila Ferraz retornará em breve por WhatsApp.';
+            formStatus.textContent = 'Obrigado! Redirecionando para o WhatsApp...';
+            
+            // Redirect to WhatsApp
+            window.open(waUrl, '_blank');
             bookingForm.reset();
             
             // Auto hide message after 6s
             setTimeout(() => {
                 formStatus.style.display = 'none';
             }, 6000);
-        }, 1500);
+        }, 1200);
     });
 }
 
