@@ -1,14 +1,15 @@
 /* --- Design System & CSS Variables --- */
 :root {
-    /* Color Palette - Triangulated Caramel Cream, Sand & Chocolate */
+    /* Color Palette - Caramel, Latte & Light Cream */
     --bg-dark: #e4cfb6;        /* Soft warm caramel cream background */
+    --bg-light-cream: #faf9f6; /* Very light premium cream background */
     --bg-card: #d5bfa7;        /* Warm latte sand/beige for card contrast */
-    --bg-overlay: rgba(228, 207, 182, 0.97); /* Caramel overlay */
+    --bg-overlay: rgba(250, 249, 246, 0.97); /* Light cream overlay */
     
     --text-pure: #24180f;      /* Deep rich chocolate for headlines */
     --text-cream: #3d2b1f;     /* Warm dark chocolate for body text */
     --text-muted: #735e4f;     /* Soft warm cocoa gray for secondary details */
-    --text-dark: #e4cfb6;      /* Caramel cream text on dark accents (buttons) */
+    --text-dark: #faf9f6;      /* Light cream text on dark accents (buttons) */
     
     --gold: #24180f;           /* Dark chocolate accent for primary elements */
     --gold-rgb: 36, 24, 15;
@@ -47,7 +48,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
-    background-color: var(--bg-dark);
+    background-color: var(--bg-light-cream);
     color: var(--text-cream);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -596,7 +597,7 @@ a {
 .services-section {
     padding: 8rem 0;
     position: relative;
-    background-color: var(--bg-dark);
+    background-color: var(--bg-light-cream);
 }
 
 .services-bg-decor {
@@ -900,7 +901,7 @@ a {
 /* --- Contact & Booking --- */
 .contact-section {
     padding: 8rem 0;
-    background-color: var(--bg-dark);
+    background-color: var(--bg-light-cream);
     border-top: 1px solid rgba(197, 168, 128, 0.1);
 }
 
