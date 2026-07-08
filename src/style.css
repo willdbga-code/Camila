@@ -1,19 +1,19 @@
 /* --- Design System & CSS Variables --- */
 :root {
-    /* Color Palette - 80% Chocolate & Light Cream */
-    --bg-dark: #1f140f;        /* Deep, rich 80% dark chocolate */
-    --bg-card: #2d1e16;        /* Slightly lighter chocolate for cards/contrast */
-    --bg-overlay: rgba(31, 20, 15, 0.97); /* Rich chocolate overlay */
+    /* Color Palette - Warm Lighter Chocolate & Light Cream */
+    --bg-dark: #2f1f17;        /* Rich warm milk chocolate (slightly lighter) */
+    --bg-card: #3d2b21;        /* Warm cacao brown for cards/contrast */
+    --bg-overlay: rgba(47, 31, 23, 0.97); /* Warm chocolate overlay */
     
     --text-pure: #faf8f2;      /* Off-white light cream for headlines */
     --text-cream: #f4efe3;     /* Warm light cream for body text */
-    --text-muted: #a3958c;     /* Muted cocoa gray for secondary text */
-    --text-dark: #1f140f;      /* Dark chocolate for text on light accents */
+    --text-muted: #bcaea5;     /* Soft cocoa gray/cream for secondary text */
+    --text-dark: #2f1f17;      /* Dark chocolate for text on light accents */
     
     --gold: #eae2d5;           /* Very light cream accent */
     --gold-rgb: 234, 226, 213;
-    --bronze: #b6a18d;         /* Soft milk-chocolate/latte accent for borders/details */
-    --bronze-light: #d8cdbf;   /* Soft warm cream/beige */
+    --bronze: #c5b09f;         /* Warm latte accent for borders/details */
+    --bronze-light: #e4d8cb;   /* Soft warm cream/beige */
     
     /* Typography */
     --font-serif: 'Cormorant Garamond', Georgia, serif;
