@@ -1,19 +1,19 @@
 /* --- Design System & CSS Variables --- */
 :root {
-    /* Color Palette */
-    --bg-dark: #090909;
-    --bg-card: #121212;
-    --bg-overlay: rgba(9, 9, 9, 0.95);
+    /* Color Palette - 80% Chocolate & Light Cream */
+    --bg-dark: #1f140f;        /* Deep, rich 80% dark chocolate */
+    --bg-card: #2d1e16;        /* Slightly lighter chocolate for cards/contrast */
+    --bg-overlay: rgba(31, 20, 15, 0.97); /* Rich chocolate overlay */
     
-    --text-pure: #ffffff;
-    --text-cream: #f4f4ee;
-    --text-muted: #8e8e88;
-    --text-dark: #121212;
+    --text-pure: #faf8f2;      /* Off-white light cream for headlines */
+    --text-cream: #f4efe3;     /* Warm light cream for body text */
+    --text-muted: #a3958c;     /* Muted cocoa gray for secondary text */
+    --text-dark: #1f140f;      /* Dark chocolate for text on light accents */
     
-    --gold: #d4af37;
-    --gold-rgb: 212, 175, 55;
-    --bronze: #c5a880;
-    --bronze-light: #dfcfb9;
+    --gold: #eae2d5;           /* Very light cream accent */
+    --gold-rgb: 234, 226, 213;
+    --bronze: #b6a18d;         /* Soft milk-chocolate/latte accent for borders/details */
+    --bronze-light: #d8cdbf;   /* Soft warm cream/beige */
     
     /* Typography */
     --font-serif: 'Cormorant Garamond', Georgia, serif;
