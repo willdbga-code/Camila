@@ -485,7 +485,7 @@ a {
 .about-section {
     padding: 8rem 0;
     border-top: 1px solid rgba(197, 168, 128, 0.1);
-    background-color: rgba(9, 9, 9, 0.6);
+    background-color: var(--bg-card);
 }
 
 .about-container {
@@ -525,7 +525,7 @@ a {
     position: absolute;
     bottom: -1rem;
     right: -1rem;
-    background-color: var(--bg-card);
+    background-color: var(--bg-dark);
     border: 1px solid var(--bronze);
     padding: 1.5rem 2rem;
     display: flex;
@@ -744,7 +744,7 @@ a {
 /* --- Gallery Section --- */
 .gallery-section {
     padding: 8rem 0;
-    background-color: rgba(9, 9, 9, 0.6);
+    background-color: var(--bg-card);
     border-top: 1px solid rgba(197, 168, 128, 0.1);
 }
 
