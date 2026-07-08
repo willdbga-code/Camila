@@ -1,19 +1,19 @@
 /* --- Design System & CSS Variables --- */
 :root {
-    /* Color Palette - Triangulated Linen Cream, Sand & Charcoal */
-    --bg-dark: #f3f2ed;        /* Soft linen warm cream from the card */
-    --bg-card: #e8e6df;        /* Soft sand/beige for card contrast */
-    --bg-overlay: rgba(243, 242, 237, 0.97); /* Linen overlay */
+    /* Color Palette - Triangulated Caramel Cream, Sand & Chocolate */
+    --bg-dark: #e4cfb6;        /* Soft warm caramel cream background */
+    --bg-card: #d5bfa7;        /* Warm latte sand/beige for card contrast */
+    --bg-overlay: rgba(228, 207, 182, 0.97); /* Caramel overlay */
     
-    --text-pure: #1e1b18;      /* Deep crisp charcoal/cocoa for headlines */
-    --text-cream: #3c3835;     /* Warm dark cocoa for body text */
-    --text-muted: #736d67;     /* Soft warm gray for secondary details */
-    --text-dark: #f3f2ed;      /* Soft cream text on dark accents (buttons) */
+    --text-pure: #24180f;      /* Deep rich chocolate for headlines */
+    --text-cream: #3d2b1f;     /* Warm dark chocolate for body text */
+    --text-muted: #735e4f;     /* Soft warm cocoa gray for secondary details */
+    --text-dark: #e4cfb6;      /* Caramel cream text on dark accents (buttons) */
     
-    --gold: #1e1b18;           /* Dark charcoal accent for primary elements */
-    --gold-rgb: 30, 27, 24;
-    --bronze: #a39587;         /* Elegant latte bronze for borders and links */
-    --bronze-light: #d3c9be;   /* Soft warm beige for borders/dividers */
+    --gold: #24180f;           /* Dark chocolate accent for primary elements */
+    --gold-rgb: 36, 24, 15;
+    --bronze: #a58c75;         /* Elegant caramel bronze for borders and links */
+    --bronze-light: #cfbcab;   /* Soft warm beige for borders/dividers */
     
     /* Typography */
     --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -175,7 +175,7 @@ a {
 .btn-secondary {
     background-color: transparent;
     color: var(--text-cream);
-    border: 1px solid rgba(30, 27, 24, 0.25);
+    border: 1px solid rgba(36, 24, 15, 0.25);
 }
 
 .btn-secondary:hover {
@@ -197,9 +197,9 @@ a {
 
 .header.scrolled {
     padding: 1rem 0;
-    background-color: rgba(243, 242, 237, 0.92);
+    background-color: rgba(228, 207, 182, 0.92);
     backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(163, 149, 135, 0.15);
+    border-bottom: 1px solid rgba(165, 140, 117, 0.15);
 }
 
 .header-container {
@@ -320,7 +320,7 @@ a {
     font-size: 25vw;
     font-family: var(--font-serif);
     font-weight: 600;
-    color: rgba(30, 27, 24, 0.02);
+    color: rgba(36, 24, 15, 0.02);
     line-height: 1;
     pointer-events: none;
     user-select: none;
@@ -459,7 +459,7 @@ a {
 .scroll-line {
     width: 1px;
     height: 60px;
-    background-color: rgba(30, 27, 24, 0.15);
+    background-color: rgba(36, 24, 15, 0.15);
     position: relative;
     overflow: hidden;
 }
@@ -606,7 +606,7 @@ a {
     font-size: 18vw;
     font-family: var(--font-serif);
     font-weight: 600;
-    color: rgba(30, 27, 24, 0.015);
+    color: rgba(36, 24, 15, 0.015);
     pointer-events: none;
 }
 
@@ -714,7 +714,7 @@ a {
 .service-action {
     margin-top: 2rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(30, 27, 24, 0.08);
+    border-top: 1px solid rgba(36, 24, 15, 0.08);
 }
 
 .service-link {
@@ -1042,7 +1042,7 @@ a {
 .form-input, .form-select, .form-textarea {
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(30, 27, 24, 0.15);
+    border-bottom: 1px solid rgba(36, 24, 15, 0.15);
     color: var(--text-cream);
     padding: 0.8rem 0;
     font-family: var(--font-sans);
@@ -1496,12 +1496,12 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(30, 27, 24, 0.1) 0%, rgba(30, 27, 24, 0.8) 100%);
+    background: linear-gradient(to bottom, rgba(36, 24, 15, 0.1) 0%, rgba(36, 24, 15, 0.8) 100%);
     transition: var(--transition-smooth);
 }
 
 .category-card:hover .category-overlay {
-    background: linear-gradient(to bottom, rgba(30, 27, 24, 0.2) 0%, rgba(30, 27, 24, 0.9) 100%);
+    background: linear-gradient(to bottom, rgba(36, 24, 15, 0.2) 0%, rgba(36, 24, 15, 0.9) 100%);
 }
 
 .category-content {
