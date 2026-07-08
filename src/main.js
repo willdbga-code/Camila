@@ -161,7 +161,8 @@ function renderGallery() {
     // Clear loader or old content
     galleryGrid.innerHTML = '';
     
-    const slice = filteredImages.slice(0, visibleCount);
+    const isMobile = window.innerWidth <= 768;
+    const slice = isMobile ? filteredImages : filteredImages.slice(0, visibleCount);
     
     if (slice.length === 0) {
         galleryGrid.innerHTML = `
@@ -215,7 +216,7 @@ function renderGallery() {
     });
     
     // Show / Hide Load More
-    if (visibleCount >= filteredImages.length) {
+    if (isMobile || visibleCount >= filteredImages.length) {
         btnLoadMore.style.display = 'none';
     } else {
         btnLoadMore.style.display = 'inline-block';

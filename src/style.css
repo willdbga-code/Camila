@@ -1317,6 +1317,11 @@ a {
         grid-column: span 1;
     }
     
+    .gallery-info {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
     .contact-container {
         grid-template-columns: 1fr;
         gap: 4rem;
@@ -1395,12 +1400,30 @@ a {
     }
     
     .gallery-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: 350px;
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        gap: 1.5rem;
+        padding: 0.5rem 1rem 2.5rem;
+        margin: 0 -2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
     
-    .span-h2 {
-        grid-row: span 1;
+    .gallery-grid::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .gallery-item {
+        flex: 0 0 78vw;
+        scroll-snap-align: center;
+        height: 480px;
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
     }
     
     .booking-form-wrapper {
