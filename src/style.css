@@ -1,19 +1,19 @@
 /* --- Design System & CSS Variables --- */
 :root {
-    /* Color Palette - Warm Lighter Chocolate & Light Cream */
-    --bg-dark: #2f1f17;        /* Rich warm milk chocolate (slightly lighter) */
-    --bg-card: #3d2b21;        /* Warm cacao brown for cards/contrast */
-    --bg-overlay: rgba(47, 31, 23, 0.97); /* Warm chocolate overlay */
+    /* Color Palette - Premium Light Cream & Dark Chocolate */
+    --bg-dark: #fcfbfa;        /* Soft, clean light cream background */
+    --bg-card: #f5f2e9;        /* Warm sand/cream for cards and contrast */
+    --bg-overlay: rgba(252, 251, 250, 0.97); /* Light cream overlay */
     
-    --text-pure: #faf8f2;      /* Off-white light cream for headlines */
-    --text-cream: #f4efe3;     /* Warm light cream for body text */
-    --text-muted: #bcaea5;     /* Soft cocoa gray/cream for secondary text */
-    --text-dark: #2f1f17;      /* Dark chocolate for text on light accents */
+    --text-pure: #24160f;      /* Rich dark chocolate for headlines */
+    --text-cream: #3d2b21;     /* Warm cocoa brown for body text */
+    --text-muted: #7d6b60;     /* Muted cocoa gray for secondary text */
+    --text-dark: #fcfbfa;      /* Light cream for text on dark accents (buttons) */
     
-    --gold: #eae2d5;           /* Very light cream accent */
-    --gold-rgb: 234, 226, 213;
-    --bronze: #c5b09f;         /* Warm latte accent for borders/details */
-    --bronze-light: #e4d8cb;   /* Soft warm cream/beige */
+    --gold: #24160f;           /* Dark chocolate accent for buttons/primary details */
+    --gold-rgb: 36, 22, 15;
+    --bronze: #b6a18d;         /* Soft latte accent for borders and details */
+    --bronze-light: #d8cdbf;   /* Soft warm cream/beige */
     
     /* Typography */
     --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -175,7 +175,7 @@ a {
 .btn-secondary {
     background-color: transparent;
     color: var(--text-cream);
-    border: 1px solid rgba(244, 244, 238, 0.2);
+    border: 1px solid rgba(36, 22, 15, 0.2);
 }
 
 .btn-secondary:hover {
@@ -197,7 +197,7 @@ a {
 
 .header.scrolled {
     padding: 1rem 0;
-    background-color: rgba(9, 9, 9, 0.9);
+    background-color: rgba(252, 251, 250, 0.9);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(197, 168, 128, 0.1);
 }
@@ -320,7 +320,7 @@ a {
     font-size: 25vw;
     font-family: var(--font-serif);
     font-weight: 600;
-    color: rgba(244, 244, 238, 0.015);
+    color: rgba(36, 22, 15, 0.02);
     line-height: 1;
     pointer-events: none;
     user-select: none;
@@ -459,7 +459,7 @@ a {
 .scroll-line {
     width: 1px;
     height: 60px;
-    background-color: rgba(244, 244, 238, 0.15);
+    background-color: rgba(36, 22, 15, 0.15);
     position: relative;
     overflow: hidden;
 }
@@ -606,7 +606,7 @@ a {
     font-size: 18vw;
     font-family: var(--font-serif);
     font-weight: 600;
-    color: rgba(244, 244, 238, 0.01);
+    color: rgba(36, 22, 15, 0.015);
     pointer-events: none;
 }
 
@@ -714,7 +714,7 @@ a {
 .service-action {
     margin-top: 2rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(244, 244, 238, 0.05);
+    border-top: 1px solid rgba(36, 22, 15, 0.08);
 }
 
 .service-link {
@@ -1042,7 +1042,7 @@ a {
 .form-input, .form-select, .form-textarea {
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(244, 244, 238, 0.15);
+    border-bottom: 1px solid rgba(36, 22, 15, 0.15);
     color: var(--text-cream);
     padding: 0.8rem 0;
     font-family: var(--font-sans);
