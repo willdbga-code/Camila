@@ -207,7 +207,7 @@ function renderGallery() {
         item.className = `gallery-item ${spanClass}`;
         item.innerHTML = `
             <div class="gallery-img-wrapper">
-                <img src="${img.thumbnail_url}" alt="Penteado por Camila Ferraz Conti" class="gallery-thumb" loading="lazy">
+                 <img src="${img.thumbnail_url}" alt="Penteado por Camila Ferraz" class="gallery-thumb" loading="lazy">
                 <div class="img-overlay"></div>
                 <div class="gallery-info">
                     <span class="gallery-cat">${img.category}</span>
@@ -336,7 +336,7 @@ if (bookingForm) {
             submitBtn.disabled = false;
             
             formStatus.className = 'form-status success';
-            formStatus.textContent = 'Obrigado! Sua solicitação de reserva foi enviada. Camila Ferraz Conti retornará em breve por WhatsApp.';
+             formStatus.textContent = 'Obrigado! Sua solicitação de reserva foi enviada. Camila Ferraz retornará em breve por WhatsApp.';
             bookingForm.reset();
             
             // Auto hide message after 6s
