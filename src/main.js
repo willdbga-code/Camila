@@ -259,6 +259,22 @@ function openLightbox(category, startIndex = 0) {
     lightboxImages = allImages.filter(img => img.category === category);
     lightboxCurrentIdx = startIndex;
     
+    // Create dot indicators dynamically
+    const dotsContainer = document.getElementById('lightbox-dots-container');
+    if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        lightboxImages.forEach((_, idx) => {
+            const dot = document.createElement('button');
+            dot.className = 'lightbox-dot';
+            dot.setAttribute('aria-label', `Ir para imagem ${idx + 1}`);
+            dot.addEventListener('click', () => {
+                lightboxCurrentIdx = idx;
+                updateLightboxContent();
+            });
+            dotsContainer.appendChild(dot);
+        });
+    }
+    
     updateLightboxContent();
     
     lightbox.classList.add('active');
@@ -279,6 +295,23 @@ function updateLightboxContent() {
     if (imgData.category === 'classicos') catTitle = 'CLÁSSICOS ATEMPORAIS';
     
     lightboxCaption.textContent = `${catTitle} • #${imgData.id} (${lightboxCurrentIdx + 1} de ${lightboxImages.length})`;
+    
+    // Update progress bar
+    const progressBar = document.getElementById('lightbox-progress-bar');
+    if (progressBar) {
+        const percentage = ((lightboxCurrentIdx + 1) / lightboxImages.length) * 100;
+        progressBar.style.width = `${percentage}%`;
+    }
+    
+    // Update active dot class
+    const dots = document.querySelectorAll('.lightbox-dot');
+    dots.forEach((dot, idx) => {
+        if (idx === lightboxCurrentIdx) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
 }
 
 function closeLightbox() {
