@@ -126,31 +126,16 @@ async function init() {
     }
 }
 
-// Dynamically assign hero and about photos using specific indices
 function setupHeroAndAbout() {
-    // We choose items:
-    // Hero 1: index 0
-    // Hero 2: index 3
-    // Hero 3: index 6
-    // About profile: index 9
-    
     const hero1 = document.getElementById('hero-img-1');
     const hero2 = document.getElementById('hero-img-2');
     const hero3 = document.getElementById('hero-img-3');
     const aboutProfile = document.getElementById('about-img-profile');
     
-    if (allImages.length > 10) {
-        if (hero1) hero1.src = allImages[0].optimized_url;
-        if (hero2) hero2.src = allImages[3].optimized_url;
-        if (hero3) hero3.src = allImages[6].optimized_url;
-        if (aboutProfile) aboutProfile.src = allImages[9].optimized_url;
-    } else if (allImages.length > 0) {
-        // Fallback
-        if (hero1) hero1.src = allImages[0].optimized_url;
-        if (hero2) hero2.src = allImages[0].optimized_url;
-        if (hero3) hero3.src = allImages[0].optimized_url;
-        if (aboutProfile) aboutProfile.src = allImages[0].optimized_url;
-    }
+    if (hero1) hero1.src = './images/optimized/Camila-1_of_18.webp';
+    if (hero2) hero2.src = './images/optimized/Camila-12_of_18.webp';
+    if (hero3) hero3.src = './images/optimized/Camila-15_of_18.webp';
+    if (aboutProfile) aboutProfile.src = './images/optimized/Camila-18_of_18.webp';
 }
 
 // --- Gallery Layout and Logic ---
