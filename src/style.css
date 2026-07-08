@@ -649,6 +649,7 @@ a {
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.02) 0%, transparent 100%);
     opacity: 0;
     transition: var(--transition-smooth);
+    pointer-events: none;
 }
 
 .service-card:hover {
