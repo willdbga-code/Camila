@@ -140,127 +140,84 @@ function setupHeroAndAbout() {
 
 // --- Gallery Layout and Logic ---
 function setupGallery() {
-    filterImages();
     renderGallery();
-    setupFilters();
     setupLightbox();
-}
-
-function filterImages() {
-    if (activeFilter === 'all') {
-        filteredImages = allImages;
-    } else {
-        filteredImages = allImages.filter(img => img.category === activeFilter);
-    }
-    visibleCount = IMAGES_PER_PAGE;
 }
 
 function renderGallery() {
     if (!galleryGrid) return;
     
-    // Clear loader or old content
     galleryGrid.innerHTML = '';
+    galleryGrid.classList.add('categories-view');
     
-    const isMobile = window.innerWidth <= 768;
-    const slice = isMobile ? filteredImages : filteredImages.slice(0, visibleCount);
-    
-    if (slice.length === 0) {
-        galleryGrid.innerHTML = `
-            <div class="gallery-loader">
-                <p>Nenhuma imagem encontrada nesta categoria.</p>
-            </div>
-        `;
-        btnLoadMore.style.display = 'none';
-        return;
-    }
-    
-    slice.forEach((img, idx) => {
-        // Calculate asymmetric spans to build a gorgeous grid layout
-        // Portrait photos fit beautifully in high columns (span-h2) or double sizes
-        let spanClass = '';
-        
-        // Custom index-based aesthetic layout pattern
-        const patternIdx = idx % 6;
-        if (patternIdx === 1) {
-            spanClass = 'span-h2'; // High tall image
-        } else if (patternIdx === 3) {
-            spanClass = 'span-w2'; // Double width
-        } else if (patternIdx === 4) {
-            spanClass = 'span-w2 span-h2'; // Large accent image
+    const categories = [
+        {
+            id: 'noivas',
+            title: 'Noivas (Bridal)',
+            tag: 'BRIDAL',
+            desc: 'Penteados exclusivos e de alta durabilidade para o seu grande dia.',
+            coverImg: './images/optimized/portfolio_1.webp',
+            count: allImages.filter(img => img.category === 'noivas').length
+        },
+        {
+            id: 'editorial',
+            title: 'Editorial & Eventos',
+            tag: 'SOCIAL & EDITORIAL',
+            desc: 'Estilo contemporâneo para madrinhas, convidadas, formandas e campanhas.',
+            coverImg: './images/optimized/portfolio_2.webp',
+            count: allImages.filter(img => img.category === 'editorial').length
+        },
+        {
+            id: 'classicos',
+            title: 'Clássicos Atemporais',
+            tag: 'CLASSICS',
+            desc: 'Coques refinados e técnicas clássicas de extrema elegância.',
+            coverImg: './images/optimized/portfolio_3.webp',
+            count: allImages.filter(img => img.category === 'classicos').length
         }
-        
-        const item = document.createElement('div');
-        item.className = `gallery-item ${spanClass}`;
-        item.innerHTML = `
-            <div class="gallery-img-wrapper">
-                 <img src="${img.thumbnail_url}" alt="Penteado por Camila Ferraz" class="gallery-thumb" loading="lazy">
-                <div class="img-overlay"></div>
-                <div class="gallery-info">
-                    <span class="gallery-cat">${img.category}</span>
-                    <h4 class="gallery-title">Visual #${img.id}</h4>
+    ];
+    
+    categories.forEach(cat => {
+        const card = document.createElement('div');
+        card.className = 'category-card';
+        card.innerHTML = `
+            <div class="category-img-wrapper">
+                <img src="${cat.coverImg}" alt="${cat.title}" class="category-cover-img" loading="lazy">
+                <div class="category-overlay"></div>
+                <div class="category-content">
+                    <span class="category-tag">${cat.tag}</span>
+                    <h3 class="category-title">${cat.title}</h3>
+                    <p class="category-desc">${cat.desc}</p>
+                    <span class="category-action">Ver Galeria (${cat.count} criações) &rarr;</span>
                 </div>
             </div>
         `;
         
-        // Open Lightbox on Click
-        item.addEventListener('click', () => {
-            openLightbox(allImages.indexOf(img));
+        // Add custom cursor hover logic to category card
+        if (cursor) {
+            card.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+            card.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+        }
+        
+        card.addEventListener('click', () => {
+            openLightbox(cat.id, 0);
         });
         
-        galleryGrid.appendChild(item);
-        
-        // Trigger entrance effect with micro-delay for staggered animation
-        setTimeout(() => {
-            item.classList.add('show');
-        }, idx * 50);
+        galleryGrid.appendChild(card);
     });
     
-    // Show / Hide Load More
-    if (isMobile || visibleCount >= filteredImages.length) {
+    if (btnLoadMore) {
         btnLoadMore.style.display = 'none';
-    } else {
-        btnLoadMore.style.display = 'inline-block';
-    }
-    
-    // Re-attach cursor hover logic for new elements
-    if (cursor) {
-        const newItems = galleryGrid.querySelectorAll('.gallery-item');
-        newItems.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-        });
     }
 }
 
-function setupFilters() {
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            activeFilter = btn.getAttribute('data-filter');
-            filterImages();
-            
-            // Fade grid effect
-            galleryGrid.style.opacity = '0';
-            setTimeout(() => {
-                renderGallery();
-                galleryGrid.style.opacity = '1';
-            }, 300);
-        });
-    });
-}
+// --- Lightbox Implementation with Carousel/Swipe Slider ---
+let lightboxImages = [];
+let lightboxCurrentIdx = 0;
 
-// Load More Click Handler
-if (btnLoadMore) {
-    btnLoadMore.addEventListener('click', () => {
-        visibleCount += IMAGES_PER_PAGE;
-        renderGallery();
-    });
-}
-
-// --- Lightbox Implementation ---
 function setupLightbox() {
+    if (!lightbox) return;
+    
     lightboxClose.addEventListener('click', closeLightbox);
     lightboxPrev.addEventListener('click', showPrevImage);
     lightboxNext.addEventListener('click', showNextImage);
@@ -274,20 +231,54 @@ function setupLightbox() {
     });
     
     // Close on background click
-    lightbox.querySelector('.lightbox-bg').addEventListener('click', closeLightbox);
+    const bg = lightbox.querySelector('.lightbox-bg');
+    if (bg) bg.addEventListener('click', closeLightbox);
+    
+    // Touch Swipe Slider Support
+    let touchstartX = 0;
+    let touchendX = 0;
+    
+    lightbox.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    lightbox.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        const diffX = touchendX - touchstartX;
+        if (Math.abs(diffX) > 50) {
+            if (diffX < 0) {
+                showNextImage();
+            } else {
+                showPrevImage();
+            }
+        }
+    }, { passive: true });
 }
 
-function openLightbox(index) {
-    currentIndex = index;
-    const imgData = allImages[currentIndex];
+function openLightbox(category, startIndex = 0) {
+    lightboxImages = allImages.filter(img => img.category === category);
+    lightboxCurrentIdx = startIndex;
     
-    lightboxImg.src = ''; // Clear source to prevent flashing old image
-    lightboxImg.src = imgData.optimized_url;
-    lightboxCaption.textContent = `Visual #${imgData.id} • ${imgData.category.toUpperCase()}`;
+    updateLightboxContent();
     
     lightbox.classList.add('active');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+}
+
+function updateLightboxContent() {
+    if (lightboxImages.length === 0) return;
+    const imgData = lightboxImages[lightboxCurrentIdx];
+    
+    lightboxImg.src = ''; 
+    lightboxImg.src = imgData.optimized_url;
+    
+    let catTitle = imgData.category.toUpperCase();
+    if (imgData.category === 'noivas') catTitle = 'NOIVAS';
+    if (imgData.category === 'editorial') catTitle = 'SOCIAL & EDITORIAL';
+    if (imgData.category === 'classicos') catTitle = 'CLÁSSICOS ATEMPORAIS';
+    
+    lightboxCaption.textContent = `${catTitle} • #${imgData.id} (${lightboxCurrentIdx + 1} de ${lightboxImages.length})`;
 }
 
 function closeLightbox() {
@@ -297,13 +288,15 @@ function closeLightbox() {
 }
 
 function showPrevImage() {
-    currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
-    openLightbox(currentIndex);
+    if (lightboxImages.length === 0) return;
+    lightboxCurrentIdx = (lightboxCurrentIdx - 1 + lightboxImages.length) % lightboxImages.length;
+    updateLightboxContent();
 }
 
 function showNextImage() {
-    currentIndex = (currentIndex + 1) % allImages.length;
-    openLightbox(currentIndex);
+    if (lightboxImages.length === 0) return;
+    lightboxCurrentIdx = (lightboxCurrentIdx + 1) % lightboxImages.length;
+    updateLightboxContent();
 }
 
 // --- Contact Form Booking Simulation ---
